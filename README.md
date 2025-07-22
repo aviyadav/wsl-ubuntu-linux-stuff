@@ -5,3 +5,15 @@
 #### sudo apt-get dist-upgrade
 #### sudo do-release-upgrade
 #### lsb_release -a
+
+
+
+
+#### intall Kali [WSL2]
+> wsl --install -d kali-linux
+
+#### install ubunti [WSL2]
+> wsl --install Ubuntu-24.04
+
+#### check options 
+> wsl --list --online
