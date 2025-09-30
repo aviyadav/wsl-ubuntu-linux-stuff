@@ -17,3 +17,11 @@
 
 #### check options 
 > wsl --list --online
+
+
+#### list of installed distros
+> wsl -l
+
+
+#### uninstall distro
+> wsl --unregister <distro>
