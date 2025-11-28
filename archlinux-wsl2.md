@@ -62,4 +62,6 @@ sudo pacman -Sy git
 sudo pacman -Sy nodejs npm
 
 sudo npm i -g npm
+
+sudo pacman -S fish
 ```
