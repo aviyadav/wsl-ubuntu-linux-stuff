@@ -64,4 +64,7 @@ sudo pacman -Sy nodejs npm
 sudo npm i -g npm
 
 sudo pacman -S fish
+
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
