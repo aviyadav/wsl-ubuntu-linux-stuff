@@ -10,6 +10,7 @@ wsl --install -d openSUSE-Tumbleweed
 ```
 sudo zypper refresh
 sudo zypper update
+sudo zypper dup
 
 sudo zypper install curl
 sudo zypper install tar
