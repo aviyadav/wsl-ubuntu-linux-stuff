@@ -4,9 +4,15 @@
 
 ```
 sudo apt update
-sudo apt install default-jdk
-javac -version
-sudo apt install openjdk-17-jdk
+
+sudo apt install openjdk-17-jdk-headless
+
+# in .bashrc
+
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+
+export PATH=$PATH:$JAVA_HOME/bin
+
 ```
 
 
@@ -21,7 +27,7 @@ sudo dnf install java-21-openjdk-devel.x86_64
 
 java -version
 
-export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 ```
 
 [opensuse]
