@@ -67,4 +67,19 @@ sudo pacman -S fish
 
 
 curl -LsSf https://astral.sh/uv/install.sh | sh
+
+
+sudo pacman -Sy python
+sudo pacman -Sy wget
+sudo pacman -Sy curl
+sudo pacman -Sy git
+sudo pacman -Sy nodejs npm
+
+sudo npm i -g npm
+
+sudo pacman -S fish
+
+
+sudo pacman -S base-devel
+
 ```
