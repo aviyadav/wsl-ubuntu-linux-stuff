@@ -12,6 +12,11 @@ or [inside folder]
 uv init . --bare
 ```
 
+#### Add .python-version
+```
+uv python pin 3.13
+```
+
 #### duckdb
 ~~~
 curl https://install.duckdb.org | sh
