@@ -12,6 +12,11 @@ or [inside folder]
 uv init . --bare
 ```
 
+#### uv upgrade
+```
+uv self update
+```
+
 #### Add .python-version
 ```
 uv python pin 3.13
