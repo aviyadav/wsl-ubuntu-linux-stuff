@@ -33,6 +33,8 @@ source .venv/bin/activate
 
 pip install --upgrade pip setuptools wheel pillow marshmallow==3.20.1
 
+pip install sqlalchemy pydantic psycopg2-binary duckdb-engine duckdb snowflake-sqlalchemy
+
 pip install apache-superset
 ```
 
@@ -77,4 +79,16 @@ superset run -p 8088 --with-threads --reload --debugger
 pip install gunicorn
 gunicorn -w 4 -b 0.0.0.0:8088 "superset.app:create_app()"
 ```
+
+[connect to duckdb - sqlalchemy connection string]
+```
+sample - duckdb:////path/to/duck.db
+
+
+duckdb:////apps/superset/clinical_data.duckdb
+duckdb:////home/avinash/apps/superset/clinical_data.duckdb
+```
+
+
+
 
