@@ -64,24 +64,32 @@ ALTER USER demouser SUPERUSER;
 
 #### connection from outside
 
+```
 sudo vim /var/lib/pgsql/data/pg_hba.conf
-
+```
+```text
 Add host all all 0.0.0.0/0 md5 to the end of the file.
-
+```
 
 #### Edit postgresql.conf to listen on all interfaces:
 
+```
 sudo vim /var/lib/pgsql/data/postgresql.conf
+```
 
+```text
 Uncomment listen_addresses and change it to *:
+```
 
+```
 listen_addresses = '*'
-
+```
 
 #### resrart postgresql
 
+```
 sudo systemctl restart postgresql
-
+```
 
 
 
