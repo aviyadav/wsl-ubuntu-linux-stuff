@@ -58,3 +58,30 @@ CREATE USER demouser WITH PASSWORD 'password';
 ALTER USER demouser SUPERUSER;
 \q
 ```
+
+
+
+
+#### connection from outside
+
+sudo vim /var/lib/pgsql/data/pg_hba.conf
+
+Add host all all 0.0.0.0/0 md5 to the end of the file.
+
+
+#### Edit postgresql.conf to listen on all interfaces:
+
+sudo vim /var/lib/pgsql/data/postgresql.conf
+
+Uncomment listen_addresses and change it to *:
+
+listen_addresses = '*'
+
+
+#### resrart postgresql
+
+sudo systemctl restart postgresql
+
+
+
+
