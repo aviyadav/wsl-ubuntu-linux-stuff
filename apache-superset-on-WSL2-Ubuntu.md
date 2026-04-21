@@ -9,11 +9,22 @@ sudo apt dist-upgrade -y
 
 [superset - setup]
 
+[on Ubuntu]
+
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install python3.11 python3-pip python3.11-dev python3.11-venv build-essential libssl-dev libffi-dev libsasl2-dev libldap2-dev default-libmysqlclient-dev
 
 sudo apt-get install micro build-essential libssl-dev libffi-dev python3-dev python3-pip libsasl2-dev libldap2-dev default-libmysqlclient-dev
+
+[on openSUSE-Tumbleweed]
+
+sudo zypper refresh
+sudo zypper update
+
+sudo zypper install gcc gcc-c++ libffi-devel python3-devel pip python3-wheel openssl-devel cyrus-sasl-devel openldap2-devel libxml2-devel libxslt-devel
+
+[common to both]
 
 mkdir superset && cd superset
 
