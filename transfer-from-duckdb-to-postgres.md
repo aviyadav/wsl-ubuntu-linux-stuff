@@ -1,6 +1,9 @@
 # transfer DB (tables with data) from duckdb to postgres
 
 ```
+INSTALL postgres;
+LOAD postgres;
+
 -- Attach the database under the alias 'pg_db'
 ATTACH 'host=localhost port=5432 dbname=demodb user=demouser password=password' AS pg_db (TYPE postgres);
 
