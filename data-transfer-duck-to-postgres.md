@@ -13,3 +13,10 @@ CREATE TABLE pg_db.target_table_name AS SELECT * FROM source_table;
 INSERT INTO pg_db.target_table_name SELECT * FROM source_table;
 
 ```
+
+## Use DuckDB to copy a smaller number of recs to a new parquet file
+
+```
+COPY (SELECT * FROM 'large_file.parquet' LIMIT 100) 
+TO 'small_file.parquet' (FORMAT PARQUET);
+```
