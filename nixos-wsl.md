@@ -96,3 +96,11 @@ sudo nixos-rebuild switch
 ```
 flake.nix to rebuild
 ```
+
+
+[enable flatpak]
+in the config file
+
+```
+services.flatpak.enable = true;
+```
