@@ -29,6 +29,9 @@ sudo passwd nixos
 sudo nix-channel --update
 
 sudo nixos-rebuild switch
+
+sudo nixos-rebuild switch --upgrade
+
 ```
 
 [change default useranem from nixos]
