@@ -7,6 +7,10 @@ download latest nixos.wsl from
 [install]
 ```
 wsl --install --from-file nixos.wsl
+
+sudo nix-channel --update
+
+sudo nixos-rebuild switch
 ```
 
 [login] 
