@@ -67,6 +67,7 @@ environment.systemPackages = with pkgs; [
   uv
 ];
 ```
+
 ctrl O -- to save
 ctrl X -- to exit
 
@@ -75,6 +76,44 @@ sudo nixos-rebuild switch
 [Now vim is available]
 
 sudo vi /etc/nixos/configuration.nix
+
+#### sample configuration.nix
+
+```
+{ config, lib, pkgs, ... }:
+
+{
+  imports = [
+    # include NixOS-WSL modules
+    <nixos-wsl/modules>
+  ];
+
+  wsl.enable = true;
+  wsl.defaultUser = "avinash";
+
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    git
+    uv
+  ];
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It's perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "26.05"; # Did you read the comment?
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+}
+
+```
+
+
+
 
 add after the packages stuff
 
@@ -107,4 +146,113 @@ in the config file
 
 ```
 services.flatpak.enable = true;
+```
+
+
+#### DEV Setup - python
+[create a file in the project folder - shell.nix]
+
+
+```
+{ pkgs ? import <nixpkgs> {} }:
+pkgs.mkShell {
+  packages = [
+    (pkgs.python3.withPackages (python-pkgs: [
+      python-pkgs.pandas
+      python-pkgs.requests
+      python-pkgs.polars
+      python-pkgs.duckdb
+      python-pkgs.pyarrow
+      python-pkgs.datafusion
+    ]))
+  ];
+}
+
+```
+
+[to activate - python]
+
+```
+nix-shell
+```
+
+
+#### DEV Setup - rust
+[create a file in the project folder - flake.nix]
+
+
+```
+{
+  description = "Rust development environment";
+
+  inputs = {
+    nixpkgs.url = "github:Nixos/nixpkgs/nixos-unstable";
+  };
+
+  outputs = { self, nixpkgs }:
+    let
+      system = "x86_64-linux"; # Adjust to your architecture if different
+      pkgs = import nixpkgs { inherit system; };
+    in {
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          cargo
+          rustc
+          rust-analyzer
+          clippy
+          rustfmt
+          pkg-config
+          gcc
+        ];
+
+        RUST_SRC_PATH = pkgs.rustPlatform.rustLibSrc;
+      };
+    };
+}
+
+```
+
+[to activate - rust]
+
+```
+nix develop
+```
+
+
+#### DEV Setup - bun
+[create a file in the project folder - flake.nix]
+
+
+```
+{
+  description = "Bun development environment";
+
+  inputs = {
+    nixpkgs.url = "github:Nixos/nixpkgs/nixos-unstable";
+  };
+
+  outputs = { self, nixpkgs }:
+    let
+      system = "x86_64-linux"; # Adjust if you are on aarch64-linux, etc.
+      pkgs = import nixpkgs { inherit system; };
+    in {
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          bun
+        ];
+
+        shellHook = ''
+          echo "Welcome to your Bun development environment!"
+          bun --version
+        '';
+      };
+    };
+}
+
+```
+
+[to activate - rust]
+
+```
+nix develop
 ```
