@@ -96,6 +96,8 @@ sudo vi /etc/nixos/configuration.nix
     wget
     git
     uv
+    cmatrix
+    fastfetch
   ];
 
   # This value determines the NixOS release from which the default
@@ -123,6 +125,19 @@ programs.nix-ld.enable = true;
 
 
 sudo nixos-rebuild switch  
+
+
+#### add btop
+
+```
+nix-shell -p btop-cuda
+nix-shell -p htop
+
+sudo nixos-rebuild switch
+
+```
+
+
 
 
 
