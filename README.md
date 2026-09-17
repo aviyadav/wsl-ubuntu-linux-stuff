@@ -32,3 +32,12 @@
 
 #### uninstall distro
 > wsl --unregister <distro>
+
+
+
+
+#### log into WSL distro home folder --
+
+```
+wsl -d Ubuntu-26.04 --cd "~"
+```
