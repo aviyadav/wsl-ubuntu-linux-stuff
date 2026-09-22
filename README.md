@@ -7,8 +7,9 @@
 
 #### sudo apt-get dist-upgrade
 #### sudo do-release-upgrade
-#### lsb_release -a
-
+```
+lsb_release -a
+```
 
 
 
